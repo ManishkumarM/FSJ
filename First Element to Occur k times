@@ -1,0 +1,30 @@
+https://practice.geeksforgeeks.org/problems/first-element-to-occur-k-times5150/1/?page=1&difficulty[]=-1&difficulty[]=0&category[]=Arrays&curated[]=1&curated[]=7&sortBy=submissions#
+
+class Solution
+{
+    public int firstElementKTime(int[] a, int n, int k) { 
+        Map<Integer,Integer> mp=new HashMap<Integer,Integer>();
+        
+        for(int i=0;i<n;i++){
+            if(mp.containsKey(a[i]))
+            {
+                
+                mp.put(a[i],mp.get(a[i])+1);
+                if(mp.get(a[i])==k)
+                 return a[i];
+            }
+            else
+             mp.put(a[i],1);
+        }
+        int flag=1;
+        for(Map.Entry<Integer,Integer> m:mp.entrySet()){
+            if(k>m.getValue())
+               flag=0;
+        }
+        if(flag==0)
+        return -1;
+        else
+         return a[0];
+        
+    } 
+}
